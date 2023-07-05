@@ -1,0 +1,43 @@
+<div class="container-md">
+    <h1>{{ titulo }}</h1>
+    <form [formGroup]="alumnoFormGroupModel" class="row">
+        
+        <div class="row mb-3">
+            <div class="col-6 form-floating">
+                <input formControlName="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">
+                <label for="nombre">Nombre</label>
+            </div>
+
+            <div class="col-6 form-floating">
+                <input formControlName="apellido" type="text" class="form-control" id="apellido" placeholder="Apellido">
+                <label for="apellido">Apellido</label>
+            </div>        
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-6 form-floating">   
+                <input formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="col-6 form-floating">   
+                <input formControlName="fNacimiento" type="date" class="form-control" id="fnacimiento" placeholder="09/03/1999">
+                <label for="fnacimiento">Fecha Nacimiento</label>
+            </div>            
+        </div>
+
+        <div class="row">
+            <div class="d-grid gap-2 d-md-block">
+                <button (click)="enviar()" type="submit" class="btn btn-outline-primary">Agregar</button>
+            </div>            
+        </div>
+    </form>
+</div>
+<div class="col-4">
+    <h5>Valor</h5>
+    <pre>{{ alumnoFormGroupModel.value | json }}</pre>
+</div>
+
+<hr>
+
+<app-listadoalumnos [listadoAlumnos]="listadoAlumnos"></app-listadoalumnos>

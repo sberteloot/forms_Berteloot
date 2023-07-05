@@ -1,0 +1,30 @@
+h1{
+    color: rgb(56, 117, 160);
+}
+
+#listaTbl {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+#listaTbl td, #listaTbl th {
+    border: 1px solid #ddd;
+    padding: 7px;
+}
+  
+#listaTbl tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+  
+#listaTbl tr:hover{
+    background-color: #ddd;
+}
+  
+#listaTbl th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #145795;
+    color: white;
+}
