@@ -4,40 +4,83 @@
         
         <div class="row mb-3">
             <div class="col-6 form-floating">
-                <input formControlName="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">
+                <input 
+                    formControlName="nombre" 
+                    type="text" 
+                    class="form-control" 
+                    id="nombre" 
+                    placeholder="Nombre"
+                    [class.is-invalid]="nombreFormControl.touched && nombreFormControl.invalid"
+                >
+                <div class="invalid-feedback">
+                    El campo es requerido
+                </div>                
                 <label for="nombre">Nombre</label>
             </div>
 
             <div class="col-6 form-floating">
-                <input formControlName="apellido" type="text" class="form-control" id="apellido" placeholder="Apellido">
+                <input 
+                    formControlName="apellido" 
+                    type="text" 
+                    class="form-control" 
+                    id="apellido" 
+                    placeholder="Apellido"
+                    [class.is-invalid]="apellidoFormControl.touched && apellidoFormControl.invalid"
+                >
+                <div class="invalid-feedback">
+                    El campo es requerido
+                </div>                
                 <label for="apellido">Apellido</label>
             </div>        
         </div>
         
         <div class="row mb-3">
             <div class="col-6 form-floating">   
-                <input formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+                <input 
+                    formControlName="email" 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    placeholder="name@example.com"
+                    [class.is-invalid]="emailFormControl.touched && emailFormControl.invalid"
+                >
+                <div class="invalid-feedback">
+                    El campo es requerido y debe contener un email
+                </div>                 
                 <label for="email">Email</label>
             </div>
 
             <div class="col-6 form-floating">   
-                <input formControlName="fNacimiento" type="date" class="form-control" id="fnacimiento" placeholder="09/03/1999">
+                <input 
+                    formControlName="fNacimiento" 
+                    type="date" 
+                    class="form-control" 
+                    id="fnacimiento" 
+                    [class.is-invalid]="fNacimientoFormControl.touched && fNacimientoFormControl.invalid"
+                >
+                <div class="invalid-feedback">
+                    El campo es requerido
+                </div>                                 
                 <label for="fnacimiento">Fecha Nacimiento</label>
             </div>            
         </div>
 
         <div class="row">
-            <div class="d-grid gap-2 d-md-block">
+            <div class="col-1 d-grid gap-2 d-md-block">
                 <button (click)="enviar()" type="submit" class="btn btn-outline-primary">Agregar</button>
-            </div>            
+            </div>      
+            <div class="col-1 d-grid gap-2 d-md-block">
+                <button (click)="limpiar()" type="submit" class="btn btn-outline-secondary">Limpiar</button>
+            </div>                    
         </div>
     </form>
 </div>
+<!--
 <div class="col-4">
     <h5>Valor</h5>
     <pre>{{ alumnoFormGroupModel.value | json }}</pre>
 </div>
-
+-->
 <hr>
 
 <app-listadoalumnos [listadoAlumnos]="listadoAlumnos"></app-listadoalumnos>

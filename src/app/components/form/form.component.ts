@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlumnoModel } from 'src/app/models/alumno.model';
+import { DateValidator } from 'src/app/validators/dateValidator';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface AlumnoFormGroup {  
@@ -20,12 +21,12 @@ export class FormComponent {
   titulo : string = "Alumnos";
   listadoAlumnos : AlumnoModel[] = [];
   numerador : number = 1;
-
+  
   // Controles
-  nombreFormControl = new FormControl('');
-  apellidoFormControl = new FormControl('');
-  emailFormControl = new FormControl('');
-  fNacimientoFormControl = new FormControl(new Date());
+  nombreFormControl = new FormControl('', [Validators.required]);
+  apellidoFormControl = new FormControl('', [Validators.required]);
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  fNacimientoFormControl = new FormControl(new Date, [Validators.required]);
 
   // FormGroup
   alumnoFormGroupModel : FormGroup<AlumnoFormGroup> = new FormGroup({
@@ -34,17 +35,30 @@ export class FormComponent {
     email : this.emailFormControl,
     fNacimiento : this.fNacimientoFormControl
   });
- 
+
+  constructor(){
+    this.limpiar();
+  }
+
+  limpiar():void{
+    this.alumnoFormGroupModel.reset();
+  }
+   
   enviar():void{
-    console.log(this.apellidoFormControl)
-    this.listadoAlumnos.push(new AlumnoModel(this.numerador, 
-                                            this.apellidoFormControl.value || '',
-                                            this.nombreFormControl.value || '', 
-                                            this.emailFormControl.value || '',
-                                            this.fNacimientoFormControl.value || new Date
-                                            ));
-    this.numerador++;
-    console.log(this.listadoAlumnos);
+    console.log(this.alumnoFormGroupModel.invalid);
+    if(!this.alumnoFormGroupModel.invalid){
+     
+        this.listadoAlumnos.push(new AlumnoModel(this.numerador, 
+          this.apellidoFormControl.value || '',
+          this.nombreFormControl.value || '', 
+          this.emailFormControl.value || '',
+          this.fNacimientoFormControl.value || new Date
+        ));
+
+        this.numerador++;
+
+        this.limpiar();
+    }    
   }
 
 }
