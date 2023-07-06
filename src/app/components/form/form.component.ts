@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AlumnoModel } from 'src/app/models/alumno.model';
-import { DateValidator } from 'src/app/validators/dateValidator';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface AlumnoFormGroup {  
